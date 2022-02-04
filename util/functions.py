@@ -27,32 +27,23 @@ def find_str(string: str, pattern: str) -> list:
     return ind
 
 
-def find_data_path():
-    """
-    Request the user to manually find dir path and return it
-    """
-    from pathlib import Path
-    from tkinter import Tk
-    from tkinter import filedialog
-    root = Tk()
-    root.withdraw()
-    data_dir = filedialog.askdirectory()
-    return Path(data_dir)
-
-
 def extract_ind(timestamp, range):
     """
     Extract timestamp indices from array from the specified range
 
-    Args:
-        timestamp: array
-        range: list [start end]
+    Parameters
+    ----------
+    timestamp: array
+        input string
+    range: list
+        [start end]
 
-    Returns:
-        ind: array
-            index of the array
-        new_array: array
-            array within the range
+    Returns
+    -------
+    ind : array
+       index of an array
+    new_array: array
+        array within the range
     """
     import numpy as np
     start = range[0]
@@ -86,31 +77,3 @@ def exists(var):
     """
 
     return var in globals()
-
-def para_interp(x, y):
-    """
-    Get max value by performing parabolic interpolation given three data points
-    Parameters
-    ----------
-    x : array
-    y : array
-
-    Returns
-    -------
-    x_max : float
-        max index
-    y_max : float
-        estimated max value
-    """
-    import numpy as np
-
-    x = np.vstack((x ** 2, x))
-    x = np.vstack((x, np.array([1, 1, 1]))).T
-
-    x = np.linalg.inv(x)
-    func = np.dot(x, y)
-
-    x_max = -func[1] / (2 * func[0])
-    y_max = (func[0] * x_max ** 2) + (func[1] * x_max) + func[2]
-
-    return x_max, y_max

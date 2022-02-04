@@ -78,15 +78,3 @@ def save_fig(fig, save_path, title, fig_ext='.png', view_folder=False, dpi=None)
     if view_folder:  # open folder after saving figures
         open_folder(save_path)
 
-
-def save2json(filename, data):
-    """
-    Save data in .json format
-    Parameters
-    ----------
-    filename : str
-    data : arr
-    """
-    import json
-    with open(filename, 'w') as f:
-        json.dump(data, f)

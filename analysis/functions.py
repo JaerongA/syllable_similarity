@@ -6,7 +6,8 @@ from util.spect import *
 
 
 def read_not_mat(notmat, unit='ms'):
-    """ read from .not.mat files generated from uisonganal
+    """
+    Read from .not.mat files generated from uisonganal
     Parameters
     ----------
     notmat : path
@@ -78,6 +79,7 @@ def get_note_type(syllables, song_db) -> list:
 def get_psd_mat(data_path, save_path,
                 save_psd=False, update=False, open_folder=False, add_date=False,
                 nfft=2 ** 10, fig_ext='.png'):
+    """Calculate psd (power spectral density matrices"""
     from analysis.parameters import freq_range
     import numpy as np
     from scipy.io import wavfile
