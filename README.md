@@ -2,6 +2,7 @@
 
 - Code for analyzing spectral similarity between a pair of song syllables by using power spectral densities.
 
+- SI (similarity index) denotes columnal average of the matching syllable in the similarity matrix
 
 - Plots song spectrograms & similarity heatmaps
 
