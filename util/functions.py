@@ -3,22 +3,6 @@ A collection of utility functions used for analysis
 """
 
 
-def unique(list):
-    """
-    Extract unique strings from the list in the order they appear
-
-    Args:
-        list: list
-            list of strings
-
-    Returns:
-        list:
-            list of unique, ordered strings
-    """
-    seen = set()
-    return [x for x in list if not (x in seen or seen.add(x))]
-
-
 def find_str(string: str, pattern: str) -> list:
     """
     Find all indices of patterns in a string
@@ -54,38 +38,6 @@ def find_data_path():
     root.withdraw()
     data_dir = filedialog.askdirectory()
     return Path(data_dir)
-
-
-def list_files(dir: str, ext: str):
-    """
-    Return the list of files in the current directory
-        Input1: directory name (path)
-        Input2: file extension (str) (e.g., .wav, .rhd etc)
-        Output: list of file path (list)
-    """
-    files = [file for file in dir.rglob('*' + ext)]
-    return files
-
-
-def open_folder(path):
-    """Open the directory in win explorer"""
-    import webbrowser
-    webbrowser.open(path)
-
-
-def myround(x, base=5):
-    """
-    Round to the next multiple of the base
-    Args:
-        x: int
-            input value
-        base: int
-            base value (by default at 5)
-
-    Returns: int
-
-    """
-    return base * round(x / base)
 
 
 def extract_ind(timestamp, range):
