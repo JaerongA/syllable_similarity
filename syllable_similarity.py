@@ -1,8 +1,3 @@
-"""
-By Jaerong
-standardized euclidean distance metric calculation credited to David Mets & David Nicholson (https://github.com/NickleDave/songdkl)
-"""
-
 from analysis.functions import read_not_mat
 import json
 from pathlib import Path
@@ -22,7 +17,7 @@ from util.spect import *
 
 
 def get_basis_psd(psd_array, notes):
-    # Get avg psd from the training set (will serve as a basis)
+    """Get avg psd from the training set (will serve as a basis)"""
     psd_dict = {}
     psd_basis_list = []
     syl_basis_list = []
@@ -49,8 +44,8 @@ def get_basis_psd(psd_array, notes):
     return psd_basis_list, syl_basis_list
 
 
-# Obtain basis data from training files
 def get_psd_mat(data_path, save_psd=False, update=False, open_folder=False, nfft=2 ** 10, fig_ext='.png'):
+    """Obtain basis data from training files"""
     # Read from a file if it already exists
     file_name = data_path / 'PSD.npy'
 
@@ -154,14 +149,16 @@ def get_psd_mat(data_path, save_psd=False, update=False, open_folder=False, nfft
     return psd_array, psd_list, file_list, all_notes
 
 
-def get_syllable_similarity(note_buffer=10, num_note_crit_basis=30, num_note_crit_testing=10,
+def get_syllable_similarity(update=True,
                             fig_save_ok=True,
                             file_save_ok=False,
                             save_psd=True,
-                            update=True,
                             fig_ext='.png'
                             ):
-
+    """
+    Calculate syllable similarity index
+    Standardized euclidean distance metric calculation credited to David Mets & David Nicholson(https: // github.com / NickleDave / songdkl)
+    """
     # Store results in the dataframe
     df = pd.DataFrame()
     df_x = pd.DataFrame()  # dataframe for unidentified syllables
@@ -173,7 +170,6 @@ def get_syllable_similarity(note_buffer=10, num_note_crit_basis=30, num_note_cri
         config = json.load(f)
 
     project_path = Path(config['project_dir'])
-
     for bird in config['birdID']:
 
         training_path = ''
@@ -441,11 +437,9 @@ if __name__ == "__main__":
     update = True  # generate a new .npz file or update the file
     fig_ext = '.pdf'  # figure file extension
 
-    get_syllable_similarity(note_buffer=note_buffer,
-                            num_note_crit_basis=num_note_crit_basis, num_note_crit_testing=num_note_crit_testing,
+    get_syllable_similarity(update=True,
                             fig_save_ok=True,
                             file_save_ok=False,
                             save_psd=True,
-                            update=True,
                             fig_ext=fig_ext
                             )
