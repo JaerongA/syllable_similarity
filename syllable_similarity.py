@@ -14,6 +14,7 @@ from scipy.stats import sem
 from util import save
 from util.draw import *
 from util.spect import *
+from util.functions import *
 
 
 def get_basis_psd(psd_array, notes):

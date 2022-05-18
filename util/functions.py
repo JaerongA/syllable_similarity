@@ -77,3 +77,19 @@ def exists(var):
     """
 
     return var in globals()
+
+
+def unique(input_list: list) -> list:
+    """
+    Extract unique strings from the list in the order they appear
+
+    Parameters
+    ----------
+    input_list : list
+
+    Returns
+    -------
+    list of unique, ordered string
+    """
+    seen = set()
+    return [x for x in list if not (x in seen or seen.add(x))]
